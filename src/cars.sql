@@ -18,10 +18,12 @@ create table cars(
     price double not null,
     primary key(id)
 );
-create table customer_cars(
+create table sales(
+	id int(10) not null auto_increment,
 	cust_id int(10) not null,
     car_id int(10) not null,
-    primary key(cust_id,car_id),
+    color varchar(24),
+    primary key(id),
     foreign key (cust_id) references customers(id),
     foreign key (car_id) references cars(id)
 );
