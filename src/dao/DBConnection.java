@@ -8,7 +8,7 @@ public class DBConnection {
 	
 	private final static String URL = "jdbc:mysql://localhost:3306/GameCharacter";
 	private final static String USERNAME = "root";
-	private final static String PASSWORD = "1457@cfg7c"; //THIS WILL NOT WORK WITHOUT ENTERING YOUR PASSWORD!
+	private final static String PASSWORD = "1457@Cfg7c"; //THIS WILL NOT WORK WITHOUT ENTERING YOUR PASSWORD!
 	
 	private static DBConnection instance = new DBConnection(); //eager construction . When you immediately take something
 															   // and put it right into the construction.
