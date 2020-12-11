@@ -22,7 +22,6 @@ create table sales(
 	id int(10) not null auto_increment,
 	cust_id int(10) not null,
     car_id int(10) not null,
-    color varchar(24),
     sales_date datetime not null,
     primary key(id),
     foreign key (cust_id) references customers(id),
