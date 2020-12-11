@@ -1,6 +1,5 @@
 package application;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {
@@ -67,7 +66,7 @@ public class Menu {
 		//Methods that will handle the logic of the main Menu
 		
 		//The Main Menu Should always loop back to this when done.
-		public void startMenu() {
+		public void start() {
 			String selection = "";
 			
 			do {
@@ -92,27 +91,27 @@ public class Menu {
 		
 		//the Customers subMenu
 		public void SubMenuCustomer() {
-			String selection = "";
+			String subSelection = "";
 			
 			do {
 				subMenu();
-				selection = scanner.nextLine();
+				subSelection = scanner.nextLine();
 				
-				if (selection.equals("1")) {
+				if (subSelection.equals("1")) {
 					//createCustomer();
-				} else if (selection.equals("2")) {
+				} else if (subSelection.equals("2")) {
 					//readCustomer();
-				} else if (selection.equals("3")) {
+				} else if (subSelection.equals("3")) {
 					//update();					
-				} else if (selection.equals("4")) {
+				} else if (subSelection.equals("4")) {
 					//delete();
 				}
 				
-			if (selection != "-1") {
+			if (subSelection != "-1") {
 				System.out.println("Press enter to Continue");
 				scanner.nextLine();
 			}
-			} while (!selection.equals("-1"));
+			} while (!subSelection.equals("-1"));
 		}
 		
 		//the Cars subMenu
