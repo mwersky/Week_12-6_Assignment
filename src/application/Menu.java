@@ -1,66 +1,122 @@
 package application;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
-
-import dao.CarsDAO;
-import dao.CustomersCarsDAO;
-import dao.CustomersDAO;
 
 public class Menu {
 	
+	//Scanner initiation
 	private Scanner scanner = new Scanner(System.in);
-	private String[] menuOpts = { //I like how you can just keep adding more options as you build the menu. 
-			"Create an Entry", //Being able to add options as I work on them in groups is a little more  
-			"Read an Entry",     //how I handle tasks so It's a little easier than just full top down approach.
+		
+	//Menu Visuals
+	private String[] menuOpts = { 
+			"Work in Customers", 
+			"Work in Cars",
+			"Maintain Sales" 
+			};
+	
+	private String[] subMenu = {
+			"Create new Entry",
+			"Read an Entry",
 			"Update an Entry",
 			"Delete an Entry",
-			"-1 to end operations" 
-			};
+			"Go Back"
+	};
+	
+	private String[] carSales = {
+		"View All Past Sales",
+		"View a specific Sale",
+		"Make a New Sale",
+		"Delete a Sale",
+		"Go Back"
+	};
 
 	
-	private CarsDAO carsDao = new CarsDAO();
-	private CustomersDAO customersDao = new CustomersDAO();
-	private CustomersCarsDAO customersCarsDao = new CustomersCarsDAO();
+	
+	
+	//Methods that list the menu and sub menu's
+		private void printMenu() {
+			System.out.println("------------");
+			System.out.println("Welcome to the dealership. What would you like to do today?");
+			for ( int i = 0; i < menuOpts.length; i++) {
+				System.out.println((i + 1) + ") " + menuOpts[i]);
+			
+				}	
+			}
+		
+		private void subMenu() {
+			System.out.println("------------");
+			System.out.println("What would you like to do?");
+			for ( int i = 0; i < subMenu.length; i++) {
+				System.out.println((i + 1) + ") " + subMenu[i]);
+			
+				}	
+			}
+		private void carSales() {
+			System.out.println("------------");
+			System.out.println("What would you like to do?");
+			for ( int i = 0; i < menuOpts.length; i++) {
+				System.out.println((i + 1) + ") " + carSales[i]);
+			
+				}	
 
-	//Method that lists the menu
-	private void printMenu() {
-		System.out.println("------------");
-		System.out.println("Welcome Warrior. What would you like to do today?");
-		for ( int i = 0; i < menuOpts.length; i++) {
-			System.out.println((i + 1) + ") " + menuOpts[i]);
+		
+		
 		}
-	}
-
-	//Primary Start Method and Menu Logic
-		public void start() {
+		
+		//Methods that will handle the logic of the main Menu
+		
+		//The Main Menu Should always loop back to this when done.
+		public void startMenu() {
 			String selection = "";
 			
 			do {
 				printMenu();
 				selection = scanner.nextLine();
 				
-				//process choice
-				try {
-					if ( selection.equals( "1" ) ) {
-					//	createEntry();
-					} else if (selection.equals( "2" ) ) {
-					//	readEntry();
-					} else if (selection.equals("3")) {
-					//	updateEntry();
-					} else if (selection.equals("4")) {
-					//	deleteEntry();
-					}
-				} catch ( SQLException e ) {
-					e.printStackTrace();					
-				}				
+				if ( selection.equals( "1" ) ) {
+					//Customers Menu
+				} else if (selection.equals( "2" ) ) {
+					//CarMenu
+				} else if (selection.equals("3")) {
+					//SalesMenu
+				}
+				
 			if (selection != "-1") {
 				System.out.println("Press enter to Continue...");
 				scanner.nextLine();
-		}
+			}
 				
 			} while (!selection.equals("-1"));	
 		}	
+		
+		//the Customers subMenu
+		public void subMenuCustomer() {
+			String selection = "";
+			
+			do {
+				subMenu();
+				selection = scanner.nextLine();
+				
+				if (selection.equals("1")) {
+					//createCustomer();
+				} else if (selection.equals("2")) {
+					//readCustomer();
+				} else if (selection.equals("3")) {
+					//update();					
+				} else if (selection.equals("4")) {
+					//delete();
+				}
+				
+			if (selection != "-1") {
+				System.out.println("Press enter to Continue");
+				scanner.nextLine();
+			}
+			} while (!selection.equals("-1"));
+		}
+		
+		//the Cars subMenu
+		
+		
 }
 
