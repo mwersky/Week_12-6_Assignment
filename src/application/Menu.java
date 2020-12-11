@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dao.CarsDAO;
-import dao.CustomersCarsDAO;
+import dao.SalesDAO;
 import dao.CustomersDAO;
 
 public class Menu {
@@ -22,7 +22,7 @@ public class Menu {
 	
 	private CarsDAO carsDao = new CarsDAO();
 	private CustomersDAO customersDao = new CustomersDAO();
-	private CustomersCarsDAO customersCarsDao = new CustomersCarsDAO();
+	private SalesDAO customersCarsDao = new SalesDAO();
 
 	//Method that lists the menu
 	private void printMenu() {
