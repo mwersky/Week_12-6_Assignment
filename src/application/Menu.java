@@ -2,6 +2,13 @@ package application;
 
 import java.util.Scanner;
 
+<<<<<<< HEAD
+=======
+import dao.CarsDAO;
+import dao.SalesDAO;
+import dao.CustomersDAO;
+
+>>>>>>> main
 public class Menu {
 	
 	//Scanner initiation
@@ -31,6 +38,7 @@ public class Menu {
 	};
 
 	
+<<<<<<< HEAD
 	
 	
 	//Methods that list the menu and sub menu's
@@ -58,6 +66,11 @@ public class Menu {
 				System.out.println((i + 1) + ") " + carSales[i]);
 			
 				}	
+=======
+	private CarsDAO carsDao = new CarsDAO();
+	private CustomersDAO customersDao = new CustomersDAO();
+	private SalesDAO customersCarsDao = new SalesDAO();
+>>>>>>> main
 
 		
 		
