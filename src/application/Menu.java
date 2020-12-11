@@ -91,7 +91,7 @@ public class Menu {
 		}	
 		
 		//the Customers subMenu
-		public void subMenuCustomer() {
+		public void SubMenuCustomer() {
 			String selection = "";
 			
 			do {
