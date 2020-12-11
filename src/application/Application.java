@@ -5,7 +5,6 @@ public class Application { //THIS WILL NOT WORK WITHOUT ENTERING A PASSWORD IN T
 	public static void main(String[] args) {
 		Menu menu = new Menu();
 		menu.start();
-
 	}
 
 }
