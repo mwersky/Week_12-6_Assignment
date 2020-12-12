@@ -12,7 +12,7 @@ public class CustomersDAO {
 	private Connection connection; 
 	private final String CREATE_CUSTOMER = "INSERT INTO customers (first_name, last_name) VALUES (?, ?)";
 	private final String READ_CUSTOMER = "SELECT * FROM customers WHERE id = ?"; 
-	private final String UPDATE_CUSTOMER = "UPDATE customers SET first_name = ?, last_name = ?";
+	private final String UPDATE_CUSTOMER = "UPDATE customers SET id = ?, first_name = ?, last_name = ?";
 	private final String DELETE_CUSTOMER = "DELETE FROM customers WHERE id = ?";
 
 	public CustomersDAO() {
@@ -34,10 +34,11 @@ public class CustomersDAO {
 		return populateCustomers(rs.getInt(1), rs.getString(2), rs.getString(3));
 	}
 	
-	public void updateCustomer(String first_name, String last_name) throws SQLException {
+	public void updateCustomer(int id, String first_name, String last_name) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(UPDATE_CUSTOMER);
-		ps.setString(1, first_name);
-		ps.setString(2, last_name);
+		ps.setInt(1, id);
+		ps.setString(2, first_name);
+		ps.setString(3, last_name);
 		ps.executeUpdate();
 	}	
 	
