@@ -8,19 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.Cars;
+import entity.Tree;
 
 public class CarsDAO {
 
 	private Connection connection; 
-	private final String LIST_OF_ALL_CARS = "Select * From Cars";
-	private final String SQL_QUERY_NUMBER_TWO = "Another query"; 
+	
+	/* What Mitch has created is the following methods: 
+	 * Create Car (model, make, modelYearConvert, priceConvert)
+	 * readCar(idNoConvert)
+	 * updateCar(idNoConvert, model, make, modelYearConvert, priceConvert)
+	 * deleteCar( carIdConvert );
+	 */
+	
+	private final String LIST_OF_ALL_CARS = "Select * From Cars"; //I'm going to add this method to the menu
 	private final String LOG_NEW_CAR = "INSERT INTO cars(model, make, model_year, price) VALUES (?, ?, ?, ?)";
-	private final String SQL_QUERY_NUMBER_FOUR = "another"; 
+	private final String READ_DETAILS_OF_SPECIFIC_CAR = "SELECT * FROM cars WHERE id = ?";
+//	private final String UPDATE_A_CAR = "Insert into this one something";
+	private final String DELETE_A_CAR = "DELETE FROM cars WHERE id = ?"; 
 	
 	public CarsDAO() {
-		connection = DBConnection.getConnection();  //I'm not sure why this doesn't work. 
+		connection = DBConnection.getConnection();
 		
 	}
+	
+	// ------------  Method for viewing all cars in the database  --------------
 	
 	public List<Cars> getCars() throws SQLException {
 		ResultSet rs = connection.prepareStatement(LIST_OF_ALL_CARS).executeQuery(); 
@@ -33,6 +45,8 @@ public class CarsDAO {
 		return cars; 
 	}
 	
+	// ------------ Method for adding a new car into the database --------------
+	
 	public void logNewCar(String model, String make, int modelYear, double price) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(LOG_NEW_CAR);
 		ps.setString(1, model);
@@ -42,6 +56,26 @@ public class CarsDAO {
 		ps.executeUpdate();
 		
 	}
+	
+	// ------------ Method for viewing a specific car -------------
+	
+	public Cars getCarById(int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(READ_DETAILS_OF_SPECIFIC_CAR);
+		ps.setInt(1, id); 
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		return populateCars(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDouble(5));
+	}
+	
+	// ------------ Method for deleting a specific car ------------
+	
+	public void deleteCarById(int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(DELETE_A_CAR);
+		ps.setInt(1, id);
+		ps.executeUpdate();
+	}
+	
+	//  ------------ Helper Method for adding car to a list ---------------
 	
 	private Cars populateCars(int carId, String model, String make, int modelYear, double price) {
 		return new Cars(carId, model, make, modelYear, price);
