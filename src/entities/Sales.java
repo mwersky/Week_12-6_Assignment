@@ -3,11 +3,12 @@ package entities;
 public class Sales {
 
 	private int saleId;
-	private int dateOfSale; 
+	private String dateOfSale; 
 	private Cars carId;
-	private Customers customerId; 
+	private Customers customerId;
+	private int profit;
 	
-	public Sales(int saleId, Customers customerId, Cars carId, int dateOfSale) {
+	public Sales(int saleId, Customers customerId, Cars carId, String dateOfSale, Int profit) {
 		this.setSaleId(saleId); 
 		this.setCustomerId(customerId);
 		this.setCarId(carId);
@@ -22,11 +23,11 @@ public class Sales {
 		this.saleId = saleId;
 	}
 
-	public int getDateOfSale() {
+	public String getDateOfSale() {
 		return dateOfSale;
 	}
 
-	public void setDateOfSale(int dateOfSale) {
+	public void setDateOfSale(String dateOfSale) {
 		this.dateOfSale = dateOfSale;
 	}
 
@@ -44,6 +45,14 @@ public class Sales {
 
 	public void setCarId(Cars carId) {
 		this.carId = carId;
+	}
+
+	public int getProfit() {
+		return profit;
+	}
+
+	public void setProfit(int profit) {
+		this.profit = profit;
 	}
 	
 }
