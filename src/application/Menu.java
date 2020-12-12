@@ -233,7 +233,7 @@ public class Menu {
 			String custId = scanner.nextLine();
 			if (custId.length() == 6) {				
 				int custIdConvert = Integer.parseInt(custId);
-				customersDAO.readCustomer( custId );
+				customersDAO.readCustomer( custIdConvert );
 			}
 		}
 		private void updateCustomer() throws SQLException {
@@ -246,7 +246,7 @@ public class Menu {
 			
 			if (custId.length() == 6 && firstName.length() > 0 && lastName.length() > 0) {
 				int custIdConvert = Integer.parseInt(custId);
-				customersDAO.updateCustomer( custId, firstName, lastName);
+				customersDAO.updateCustomer( custIdConvert, firstName, lastName);
 			}
 			
 		}
