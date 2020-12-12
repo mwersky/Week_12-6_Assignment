@@ -3,19 +3,16 @@ package entities;
 
 public class Customers {
 
-	
 	private int customerId;
 	private String firstName;
 	private String lastName;
 
-	
 	public Customers(int customerId, String firstName, String lastName) {
 		this.setCustomerId(customerId);
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 	}
 
-	
 	//Getters and setters.
 	public int getCustomerId() {
 		return customerId;
