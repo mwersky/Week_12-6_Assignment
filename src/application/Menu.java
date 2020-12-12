@@ -206,16 +206,15 @@ public class Menu {
 		
 		
 		//_________________________________________SALES HELPER METHODS___________________________________________________//
-		private void viewRecentSales() {
+		private void viewRecentSales() throws SQLException {
 			
 		}
-		private void viewSpecificSale() {		
+		private void viewSpecificSale() throws SQLException {
+		}
+		private void createSale() throws SQLException {		
 			
 		}
-		private void createSale() {		
-			
-		}
-		private void deleteSale() {		
+		private void deleteSale() throws SQLException {		
 			
 		}
 		
@@ -229,7 +228,7 @@ public class Menu {
 				customersDAO.createCustomer ( firstName, lastName );
 			}
 		}
-		private void readCustomer() {
+		private void readCustomer() throws SQLException {
 			System.out.println("Customer id no: ");
 			String custId = scanner.nextLine();
 			if (custId.length() == 6) {				
@@ -237,7 +236,7 @@ public class Menu {
 				customersDAO.readCustomer( custId );
 			}
 		}
-		private void updateCustomer() {
+		private void updateCustomer() throws SQLException {
 			System.out.println("Customer id no: ");
 			String custId = scanner.nextLine();
 			System.out.println("New first name: ");
@@ -251,7 +250,7 @@ public class Menu {
 			}
 			
 		}
-		private void deleteCustomer() {
+		private void deleteCustomer() throws SQLException {
 			System.out.println("Customer id no: ");
 			String custId = scanner.nextLine();
 			if (custId.length() == 6) {
