@@ -6,9 +6,9 @@ public class Sales {
 	private String dateOfSale; 
 	private Cars carId;
 	private Customers customerId;
-	private int profit;
+	private double profit;
 	
-	public Sales(int saleId, Customers customerId, Cars carId, String dateOfSale, Int profit) {
+	public Sales(int saleId, Customers customerId, Cars carId, String dateOfSale, double profit) {
 		this.setSaleId(saleId); 
 		this.setCustomerId(customerId);
 		this.setCarId(carId);
@@ -47,7 +47,7 @@ public class Sales {
 		this.carId = carId;
 	}
 
-	public int getProfit() {
+	public double getProfit() {
 		return profit;
 	}
 
