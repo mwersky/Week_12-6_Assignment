@@ -31,7 +31,7 @@ public class Menu {
 	};
 
 	
-	
+//_______________________________________________________________________________________________________________//	
 	
 	//Methods that list the menu and sub menu's
 		private void printMenu() {
@@ -51,15 +51,15 @@ public class Menu {
 			
 				}	
 			}
-		private void carSales() {
+		private void salesMenu() {
 			System.out.println("------------");
 			System.out.println("What would you like to do?");
-			for ( int i = 0; i < menuOpts.length; i++) {
+			for ( int i = 0; i < carSales.length; i++) {
 				System.out.println((i + 1) + ") " + carSales[i]);
 			
 				}	
 
-		
+//_______________________________________________________________________________________________________________//		
 		
 		}
 		
@@ -89,8 +89,9 @@ public class Menu {
 			} while (!selection.equals("-1"));	
 		}	
 		
+		
 		//the Customers subMenu
-		public void SubMenuCustomer() {
+		public void SubMenuCars() {
 			String subSelection = "";
 			
 			do {
@@ -98,13 +99,15 @@ public class Menu {
 				subSelection = scanner.nextLine();
 				
 				if (subSelection.equals("1")) {
-					//createCustomer();
+					createCar();
 				} else if (subSelection.equals("2")) {
-					//readCustomer();
+					readCar();
 				} else if (subSelection.equals("3")) {
-					//update();					
+					updateCar();					
 				} else if (subSelection.equals("4")) {
-					//delete();
+					deleteCar();
+				} else if (subSelection.equals("5")) {
+					start(); //this method takes us back to the main menu.
 				}
 				
 			if (subSelection != "-1") {
@@ -114,8 +117,109 @@ public class Menu {
 			} while (!subSelection.equals("-1"));
 		}
 		
+
 		//the Cars subMenu
+		public void SubMenuCustomer() {
+			String subSelection = "";
+			
+			do {
+				subMenu();
+				subSelection = scanner.nextLine();
+				
+				if (subSelection.equals("1")) {
+					createCustomer();
+				} else if (subSelection.equals("2")) {
+					readCustomer();
+				} else if (subSelection.equals("3")) {
+					updateCustomer();					
+				} else if (subSelection.equals("4")) {
+					deleteCustomer();
+				} else if (subSelection.equals("5")) {
+					start(); //this method takes us back to the main menu.
+				}
+				
+			if (subSelection != "-1") {
+				System.out.println("Press enter to Continue");
+				scanner.nextLine();
+			}
+			} while (!subSelection.equals("-1"));
+		}
+
+
+		//the Sales Menu
+		public void SalesMenu() {
+			String subSelection = "";
+			
+			do {
+				salesMenu();
+				subSelection = scanner.nextLine();
+				
+				if (subSelection.equals("1")) {
+					viewRecentSales();
+				} else if (subSelection.equals("2")) {
+					viewSpecificSale();
+				} else if (subSelection.equals("3")) {
+					createSale();
+				} else if (subSelection.equals("4")) {
+					deleteSale();
+				} else if (subSelection.equals ("5")) {
+					start();
+				}
+			
+			if (subSelection != "-1") {
+				System.out.println("Press enter to Continue");
+				scanner.nextLine();
+			}
+			} while (!subSelection.equals("-1"));
+			
+		}
+
+
+				
+		//_______________________________________________________________________________________________________________//
 		
+		//Helper methods for the rest
 		
+		//Sales Helper Methods
+		private void viewRecentSales() {
+			
+		}
+		private void viewSpecificSale() {		
+			
+		}
+		private void createSale() {		
+			
+		}
+		private void deleteSale() {		
+			
+		}
+		
+		//Customer helper methods
+		private void createCustomer() {
+			
+		}
+		private void readCustomer() {
+			
+		}
+		private void updateCustomer() {
+			
+		}
+		private void deleteCustomer() {
+			
+		}
+		
+		//Cars Helper Methods
+private void createCar() {
+			
+		}
+		private void readCar() {
+			
+		}
+		private void updateCar() {
+			
+		}
+		private void deleteCar() {
+			
+		}
 }
 
