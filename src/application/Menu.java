@@ -261,7 +261,7 @@ public class Menu {
 		} 
 		
 	//___________________________________________Cars Helper Methods_________________________________________________//
-		private void createCar() { //holy text block.
+		private void createCar() throws SQLException { //holy text block.
 			System.out.println("Car Model: ");
 			String model = scanner.nextLine();
 			
@@ -277,21 +277,21 @@ public class Menu {
 				if (model.length() > 0 && make.length() > 0 && modelYear.length() > 0 && price.length() > 0) {
 					int modelYearConvert = Integer.parseInt(modelYear); //big brain code
 					double priceConvert = Double.parseDouble(price); //more big brain code
-					carsDAO.createCar(model, make, modelYearConvert, priceConvert);
+					carsDAO.logNewCar(model, make, modelYearConvert, priceConvert);
 				}
 			
 		}
-		private void readCar() { //wow this was easy.
+		private void readCar() throws SQLException { //wow this was easy.
 			System.out.println("Car identification number: ");
 			String idNo = scanner.nextLine();
 			
 			if (idNo.length() > 0 ) {
 				int idNoConvert = Integer.parseInt(idNo);
-				carsDAO.readCar(idNoConvert);
+				carsDAO.getCarById(idNoConvert);
 			}
 			
 		}
-		private void updateCar() {
+		private void updateCar() throws SQLException {
 			System.out.println("Car identification number: ");
 			String idNo = scanner.nextLine();
 			
@@ -311,16 +311,16 @@ public class Menu {
 					int idNoConvert = Integer.parseInt(idNo); //big brain code
 					int modelYearConvert = Integer.parseInt(modelYear);
 					double priceConvert = Double.parseDouble(price); //more big brain code
-					carsDAO.updateCar(idNoConvert, model, make, modelYearConvert, priceConvert);
+					carsDAO.updateCarById(idNoConvert, model, make, modelYearConvert, priceConvert);
 				}
 			
 		}
-		private void deleteCar() {
+		private void deleteCar() throws SQLException {
 			System.out.println("Car id no: ");
 			String carId = scanner.nextLine();
 			if (carId.length() == 6) {
 				int carIdConvert = Integer.parseInt(carId);
-				carsDAO.deleteCar( carIdConvert );
+				carsDAO.deleteCarById( carIdConvert );
 			}
 		}
 }
