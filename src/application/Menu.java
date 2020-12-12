@@ -207,15 +207,38 @@ public class Menu {
 		
 		//_________________________________________SALES HELPER METHODS___________________________________________________//
 		private void viewRecentSales() throws SQLException {
-			
+			System.out.println("Processing. One Moment...");		
+			salesDao.getSales();
 		}
 		private void viewSpecificSale() throws SQLException {
+			System.out.println("Enter Sales Identification Number: ");
+			int saleId = scanner.nextInt();
+			
+			if (saleId > 0) {
+			salesDao.getSaleById( saleId );
+			}
 		}
 		private void createSale() throws SQLException {		
+			System.out.println("Customer ID No:");
+			int custId = scanner.nextInt();
 			
+			System.out.println("Car ID No");			
+			int carId = scanner.nextInt();
+			
+			System.out.println("Profit of Sale: ");
+			double profit = scanner.nextDouble();
+			
+			if (custId > 0 && carId > 0 && profit > 0) {
+			salesDao.logNewSale(custId, carId, profit);
+			}
 		}
 		private void deleteSale() throws SQLException {		
+			System.out.println("Sale Identification number: ");
+			int saleId = scanner.nextInt();
 			
+			if( saleId > 0 ) {
+			salesDao.deleteSaleById( saleId );
+			}
 		}
 		
 		//______________________________________CUSTOMER HELPER METHODS___________________________________________________//
