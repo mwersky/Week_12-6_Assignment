@@ -23,6 +23,11 @@ public class Cars {
 	public void setCarId(int carId) {
 		this.carId = carId;
 	}
+	
+	public int setIntToCarId(int carId) {
+		this.carId = carId;
+		return carId;
+	}
 
 	public String getModel() {
 		return model;
