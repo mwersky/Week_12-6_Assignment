@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.Cars;
-import entity.Tree;
 
 public class CarsDAO {
 
@@ -24,7 +23,7 @@ public class CarsDAO {
 	private final String LIST_OF_ALL_CARS = "Select * From Cars"; //I'm going to add this method to the menu
 	private final String LOG_NEW_CAR = "INSERT INTO cars(model, make, model_year, price) VALUES (?, ?, ?, ?)";
 	private final String READ_DETAILS_OF_SPECIFIC_CAR = "SELECT * FROM cars WHERE id = ?";
-//	private final String UPDATE_A_CAR = "Insert into this one something";
+	private final String UPDATE_A_CAR = "UPDATE cars SET mode = ?, make = ?, model_year = ?, price = ? WHERE id = ?";
 	private final String DELETE_A_CAR = "DELETE FROM cars WHERE id = ?"; 
 	
 	public CarsDAO() {
@@ -65,6 +64,19 @@ public class CarsDAO {
 		ResultSet rs = ps.executeQuery();
 		rs.next();
 		return populateCars(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDouble(5));
+	}
+	
+	// ------------- Method for updating a specific car by id ------
+	
+	public void updateCarById(int id, String model, String make, int modelYear, double price) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(UPDATE_A_CAR);
+		ps.setString(1, model);
+		ps.setString(2, make);
+		ps.setInt(3, modelYear);
+		ps.setDouble(4, price);
+		ps.setInt(5, id);
+		ps.executeUpdate(); 
+		
 	}
 	
 	// ------------ Method for deleting a specific car ------------
