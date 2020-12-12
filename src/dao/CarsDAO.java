@@ -12,14 +12,6 @@ import entities.Cars;
 public class CarsDAO {
 
 	private Connection connection; 
-	
-	/* What Mitch has created is the following methods: 
-	 * Create Car (model, make, modelYearConvert, priceConvert)
-	 * readCar(idNoConvert)
-	 * updateCar(idNoConvert, model, make, modelYearConvert, priceConvert)
-	 * deleteCar( carIdConvert );
-	 */
-	
 	private final String LIST_OF_ALL_CARS = "Select * From Cars"; //I'm going to add this method to the menu
 	private final String LOG_NEW_CAR = "INSERT INTO cars(model, make, model_year, price) VALUES (?, ?, ?, ?)";
 	private final String READ_DETAILS_OF_SPECIFIC_CAR = "SELECT * FROM cars WHERE id = ?";
