@@ -1,12 +1,11 @@
 package application;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
-<<<<<<< HEAD
-=======
+import dao.CustomersDAO;
 import dao.CarsDAO;
 import dao.SalesDAO;
-import dao.CustomersDAO;
 
 
 public class Menu {
@@ -37,11 +36,13 @@ public class Menu {
 		"Go Back"
 	};
 
+	private CustomersDAO customersDAO = new CustomersDAO();
+	private CarsDAO carsDAO = new CarsDAO();
+	private SalesDAO salesDao = new SalesDAO();
 	
-
+//________________________________________Methods that list the menu and sub menu's____________________________________//	
 	
-	
-	//Methods that list the menu and sub menu's
+								
 		private void printMenu() {
 			System.out.println("------------");
 			System.out.println("Welcome to the dealership. What would you like to do today?");
@@ -59,25 +60,16 @@ public class Menu {
 			
 				}	
 			}
-		private void carSales() {
+		private void salesMenu() {
 			System.out.println("------------");
 			System.out.println("What would you like to do?");
-			for ( int i = 0; i < menuOpts.length; i++) {
+			for ( int i = 0; i < carSales.length; i++) {
 				System.out.println((i + 1) + ") " + carSales[i]);
 			
-				}	
-
-			
-	private CarsDAO carsDao = new CarsDAO();
-	private CustomersDAO customersDao = new CustomersDAO();
-	private SalesDAO customersCarsDao = new SalesDAO();
-
-
-		
-		
+				}				
 		}
 		
-		//Methods that will handle the logic of the main Menu
+		//__________________________Methods that will handle the logic of the main Menu_________________________________//
 		
 		//The Main Menu Should always loop back to this when done.
 		public void start() {
@@ -88,11 +80,11 @@ public class Menu {
 				selection = scanner.nextLine();
 				
 				if ( selection.equals( "1" ) ) {
-					//Customers Menu
+					SubMenuCustomer();
 				} else if (selection.equals( "2" ) ) {
-					//CarMenu
+					SubMenuCars();
 				} else if (selection.equals("3")) {
-					//SalesMenu
+					SalesMenu();
 				}
 				
 			if (selection != "-1") {
@@ -103,22 +95,30 @@ public class Menu {
 			} while (!selection.equals("-1"));	
 		}	
 		
-		//the Customers subMenu
-		public void SubMenuCustomer() {
+		
+		//____________________________________the Customers subMenu_________________________________________________//
+		public void SubMenuCars() {
 			String subSelection = "";
 			
 			do {
 				subMenu();
 				subSelection = scanner.nextLine();
 				
+				try {
 				if (subSelection.equals("1")) {
-					//createCustomer();
+					createCar();
 				} else if (subSelection.equals("2")) {
-					//readCustomer();
+					readCar();
 				} else if (subSelection.equals("3")) {
-					//update();					
+					updateCar();					
 				} else if (subSelection.equals("4")) {
-					//delete();
+					deleteCar();
+				} else if (subSelection.equals("5")) {
+					start(); //this method takes us back to the main menu.
+				}			
+				} catch ( SQLException e ) {
+					e.printStackTrace();
+					
 				}
 				
 			if (subSelection != "-1") {
@@ -128,8 +128,200 @@ public class Menu {
 			} while (!subSelection.equals("-1"));
 		}
 		
-		//the Cars subMenu
+
+		//_________________________________________the Cars subMenu_________________________________________________//
+		public void SubMenuCustomer() {
+			String subSelection = "";
+			
+			do {
+				subMenu();
+				subSelection = scanner.nextLine();
+				
+				try {
+				if (subSelection.equals("1")) {
+					createCustomer();
+				} else if (subSelection.equals("2")) {
+					readCustomer();
+				} else if (subSelection.equals("3")) {
+					updateCustomer();					
+				} else if (subSelection.equals("4")) {
+					deleteCustomer();
+				} else if (subSelection.equals("5")) {
+					start(); //this method takes us back to the main menu.
+				}
+				} catch ( SQLException e ) {
+					e.printStackTrace();
+					
+				}
+				
+			if (subSelection != "-1") {
+				System.out.println("Press enter to Continue");
+				scanner.nextLine();
+			}
+			} while (!subSelection.equals("-1"));
+		}
+
+
+		//___________________________________________the Sales Menu______________________________________________//
+		public void SalesMenu() {
+			String subSelection = "";
+			
+			do {
+				salesMenu();
+				subSelection = scanner.nextLine();
+				
+				try {
+					
+				if (subSelection.equals("1")) {
+					viewRecentSales();
+				} else if (subSelection.equals("2")) {
+					viewSpecificSale();
+				} else if (subSelection.equals("3")) {
+					createSale();
+				} else if (subSelection.equals("4")) {
+					deleteSale();
+				} else if (subSelection.equals ("5")) {
+					start();
+				}
+				
+				} catch ( SQLException e ) {
+					e.printStackTrace();
+					
+				}
+			
+			if (subSelection != "-1") {
+				System.out.println("Press enter to Continue");
+				scanner.nextLine();
+			}
+			} while (!subSelection.equals("-1"));
+			
+		}
+
+				
+		
+
+		
+		//______________________________________HELPER METHODS FOR THE REST_______________________________________________//
 		
 		
+		
+		//_________________________________________SALES HELPER METHODS___________________________________________________//
+		private void viewRecentSales() {
+			
+		}
+		private void viewSpecificSale() {		
+			
+		}
+		private void createSale() {		
+			
+		}
+		private void deleteSale() {		
+			
+		}
+		
+		//______________________________________CUSTOMER HELPER METHODS___________________________________________________//
+		private void createCustomer() throws SQLException {
+			System.out.println("First Name: ");
+			String firstName = scanner.nextLine();
+			System.out.println("Last Name: ");
+			String lastName = scanner.nextLine();
+			if (firstName.length() > 0 && lastName.length() > 0) {
+				customersDAO.createCustomer ( firstName, lastName );
+			}
+		}
+		private void readCustomer() {
+			System.out.println("Customer id no: ");
+			String custId = scanner.nextLine();
+			if (custId.length() == 6) {				
+				int custIdConvert = Integer.parseInt(custId);
+				customersDAO.readCustomer( custId );
+			}
+		}
+		private void updateCustomer() {
+			System.out.println("Customer id no: ");
+			String custId = scanner.nextLine();
+			System.out.println("New first name: ");
+			String firstName = scanner.nextLine();
+			System.out.println("New last name: ");
+			String lastName = scanner.nextLine();
+			
+			if (custId.length() == 6 && firstName.length() > 0 && lastName.length() > 0) {
+				int custIdConvert = Integer.parseInt(custId);
+				customersDAO.updateCustomer( custId, firstName, lastName);
+			}
+			
+		}
+		private void deleteCustomer() {
+			System.out.println("Customer id no: ");
+			String custId = scanner.nextLine();
+			if (custId.length() == 6) {
+				int custIdConvert = Integer.parseInt(custId);
+				customersDAO.deleteCustomer( custIdConvert );
+			}
+		} 
+		
+	//___________________________________________Cars Helper Methods_________________________________________________//
+		private void createCar() { //holy text block.
+			System.out.println("Car Model: ");
+			String model = scanner.nextLine();
+			
+			System.out.println("Make :");
+			String make = scanner.nextLine();
+			
+			System.out.println("Model_Year");
+			String modelYear = scanner.nextLine();
+			
+			System.out.println("Price (to the .xx: ");
+			String price = scanner.nextLine();
+			
+				if (model.length() > 0 && make.length() > 0 && modelYear.length() > 0 && price.length() > 0) {
+					int modelYearConvert = Integer.parseInt(modelYear); //big brain code
+					double priceConvert = Double.parseDouble(price); //more big brain code
+					carsDAO.createCar(model, make, modelYearConvert, priceConvert);
+				}
+			
+		}
+		private void readCar() { //wow this was easy.
+			System.out.println("Car identification number: ");
+			String idNo = scanner.nextLine();
+			
+			if (idNo.length() > 0 ) {
+				int idNoConvert = Integer.parseInt(idNo);
+				carsDAO.readCar(idNoConvert);
+			}
+			
+		}
+		private void updateCar() {
+			System.out.println("Car identification number: ");
+			String idNo = scanner.nextLine();
+			
+			System.out.println("Car Model: ");
+			String model = scanner.nextLine();
+			
+			System.out.println("Make :");
+			String make = scanner.nextLine();
+			
+			System.out.println("Model_Year");
+			String modelYear = scanner.nextLine();
+			
+			System.out.println("Price (to the .xx: ");
+			String price = scanner.nextLine();
+			
+				if (model.length() > 0 && make.length() > 0 && modelYear.length() > 0 && price.length() > 0) {
+					int idNoConvert = Integer.parseInt(idNo); //big brain code
+					int modelYearConvert = Integer.parseInt(modelYear);
+					double priceConvert = Double.parseDouble(price); //more big brain code
+					carsDAO.updateCar(idNoConvert, model, make, modelYearConvert, priceConvert);
+				}
+			
+		}
+		private void deleteCar() {
+			System.out.println("Car id no: ");
+			String carId = scanner.nextLine();
+			if (carId.length() == 6) {
+				int carIdConvert = Integer.parseInt(carId);
+				carsDAO.deleteCar( carIdConvert );
+			}
+		}
 }
 
