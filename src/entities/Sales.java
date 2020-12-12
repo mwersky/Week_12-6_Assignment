@@ -4,15 +4,33 @@ public class Sales {
 
 	private int saleId;
 	private String dateOfSale; 
-	private Cars carId;
-	private Customers customerId;
+	private Cars car; 
+	private int carId; 
+	private Customers customer;
+	private int customerId; 
 	private double profit;
 	
-	public Sales(int saleId, Customers customerId, Cars carId, String dateOfSale, double profit) {
+	public Sales(int saleId, int customerId, int carId, String dateOfSale, double profit) {
 		this.setSaleId(saleId); 
 		this.setCustomerId(customerId);
 		this.setCarId(carId);
 		this.setDateOfSale(dateOfSale);
+	}
+	
+	private void setCarId(int carId) {
+		this.carId = car.getCarId(); 
+	}
+	
+	public int getCarId() {
+		return carId; 
+	}
+	
+	public int getCustomerId() {
+		return customerId; 
+	}
+	
+	public void setCustomerId(int customerId) {
+		this.customerId = customer.getCustomerId(); 
 	}
 
 	public int getSaleId() {
@@ -29,22 +47,6 @@ public class Sales {
 
 	public void setDateOfSale(String dateOfSale) {
 		this.dateOfSale = dateOfSale;
-	}
-
-	public Customers getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Customers customerId) {
-		this.customerId = customerId;
-	}
-
-	public Cars getCarId() {
-		return carId;
-	}
-
-	public void setCarId(Cars carId) {
-		this.carId = carId;
 	}
 
 	public double getProfit() {
