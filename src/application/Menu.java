@@ -242,7 +242,7 @@ public class Menu {
 			double profit = scanner.nextDouble();
 			
 			if (custId > 0 && carId > 0 && profit > 0) {
-			salesDao.logNewSale(custId, carId, profit);
+			salesDao.logNewSale(custId, carId);
 			}
 		}
 		private void deleteSale() throws SQLException {		

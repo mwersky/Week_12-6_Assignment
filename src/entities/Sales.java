@@ -8,9 +8,9 @@ public class Sales {
 	private int carId; 
 	private Customers customer;
 	private int customerId; 
-	private double profit;
+//	private double profit;
 	
-	public Sales(int saleId, int customerId, int carId, String dateOfSale, double profit) {
+	public Sales(int saleId, int customerId, int carId, String dateOfSale) {
 		this.setSaleId(saleId); 
 		this.setCustomerId(customerId);
 		this.setCarId(carId);
@@ -49,12 +49,12 @@ public class Sales {
 		this.dateOfSale = dateOfSale;
 	}
 
-	public double getProfit() {
-		return profit;
-	}
-
-	public void setProfit(int profit) {
-		this.profit = profit;
-	}
+//	public double getProfit() {
+//		return profit;
+//	}
+//
+//	public void setProfit(int profit) {
+//		this.profit = profit;
+//	}
 	
 }
