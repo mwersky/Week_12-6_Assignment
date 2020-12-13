@@ -1,8 +1,8 @@
 create database if not exists cars;
 use cars;
+drop table if exists sales;
 drop table if exists customers;
 drop table if exists cars;
-drop table if exists customer_cars;
 
 create table customers(
 	id int(10) not null auto_increment,
