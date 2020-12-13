@@ -48,8 +48,8 @@ public class Menu {
 			System.out.println("Welcome to the dealership. What would you like to do today?");
 			for ( int i = 0; i < menuOpts.length; i++) {
 				System.out.println((i + 1) + ") " + menuOpts[i]);
-			
-				}	
+				}
+			System.out.println("-1 exits the application.");
 			}
 		
 		private void subMenu() {
@@ -68,6 +68,9 @@ public class Menu {
 			
 				}				
 		}
+		//______________________________________SUPER SPICY PASSWORD METHOD_____________________________________________//
+
+		
 		
 		//__________________________Methods that will handle the logic of the main Menu_________________________________//
 		
@@ -202,7 +205,12 @@ public class Menu {
 
 		
 		//______________________________________HELPER METHODS FOR THE REST_______________________________________________//
-		
+		/*
+		 * Notes:
+		 * I didn't really think for a second about how you can take a different variable other than a String from a scanner and just immediately fill in variables.
+		 * To this extent I ended up leaving a lot of my original code because I was really proud of my work around. The Sales menu has all the most up to date code and should 
+		 * be a great example of how I could have written this in a cleaner way.
+		 */
 		
 		
 		//_________________________________________SALES HELPER METHODS___________________________________________________//
