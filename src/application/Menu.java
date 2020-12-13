@@ -105,24 +105,24 @@ public class Menu {
 		
 		//____________________________________the Cars subMenu_________________________________________________//
 		public void SubMenuCars() {
-			String subSelection = "";
+			String subCars = "";
 			
 			do {
 				subMenu();
-				subSelection = scanner.nextLine();
+				subCars = scanner.nextLine();
 				
 				try {
-				if (subSelection.equals("1")) {
+				if (subCars.equals("1")) {
 					createCar();
-				} else if (subSelection.equals("2")) {
+				} else if (subCars.equals("2")) {
 					readCar();
-				} else if (subSelection.equals("3")) {
+				} else if (subCars.equals("3")) {
 					updateCar();					
-				} else if (subSelection.equals("4")) {
+				} else if (subCars.equals("4")) {
 					deleteCar();
-				} else if (subSelection.equals("5")) {
+				} else if (subCars.equals("5")) {
 					viewAllCarsById();
-				} else if (subSelection.equals("6")) {
+				} else if (subCars.equals("6")) {
 					start(); //this method takes us back to the main menu.
 				}			
 				} catch ( SQLException e ) {
@@ -130,34 +130,34 @@ public class Menu {
 					
 				}
 				
-			if (subSelection != "-1") {
+			if (subCars != "-1") {
 				System.out.println("Press enter to Continue");
 				scanner.nextLine();
 			}
-			} while (!subSelection.equals("-1"));
+			} while (!subCars.equals("-1"));
 		}
 		
 
 		//_________________________________________the Customers subMenu_________________________________________________//
 		public void SubMenuCustomer() {
-			String subSelection = "";
+			String subCustomers = "";
 			
 			do {
 				subMenu();
-				subSelection = scanner.nextLine();
+				subCustomers = scanner.nextLine();
 				
 				try {
-				if (subSelection.equals("1")) {
+				if (subCustomers.equals("1")) {
 					createCustomer();
-				} else if (subSelection.equals("2")) {
+				} else if (subCustomers.equals("2")) {
 					readCustomer();
-				} else if (subSelection.equals("3")) {
+				} else if (subCustomers.equals("3")) {
 					updateCustomer();					
-				} else if (subSelection.equals("4")) {
+				} else if (subCustomers.equals("4")) {
 					deleteCustomer();
-				} else if (subSelection.equals("5")) {	
+				} else if (subCustomers.equals("5")) {	
 					viewAllCustById();
-				} else if (subSelection.equals("6")) {
+				} else if (subCustomers.equals("6")) {
 					start(); //this method takes us back to the main menu.
 				}
 				} catch ( SQLException e ) {
@@ -165,33 +165,33 @@ public class Menu {
 					
 				}
 				
-			if (subSelection != "-1") {
+			if (subCustomers != "-1") {
 				System.out.println("Press enter to Continue");
 				scanner.nextLine();
 			}
-			} while (!subSelection.equals("-1"));
+			} while (!subCustomers.equals("-1"));
 		}
 
 
 		//___________________________________________the Sales Menu______________________________________________//
 		public void SalesMenu() {
-			String subSelection = "";
+			String subSales = "";
 			
 			do {
 				salesMenu();
-				subSelection = scanner.nextLine();
+				subSales = scanner.nextLine();
 				
 				try {
 					
-				if (subSelection.equals("1")) {
+				if (subSales.equals("1")) {
 					viewRecentSales();
-				} else if (subSelection.equals("2")) {
+				} else if (subSales.equals("2")) {
 					viewSpecificSale();
-				} else if (subSelection.equals("3")) {
+				} else if (subSales.equals("3")) {
 					createSale();
-				} else if (subSelection.equals("4")) {
+				} else if (subSales.equals("4")) {
 					deleteSale();
-				} else if (subSelection.equals ("5")) {
+				} else if (subSales.equals ("5")) {
 					start();
 				}
 				
@@ -200,11 +200,11 @@ public class Menu {
 					
 				}
 			
-			if (subSelection != "-1") {
+			if (subSales != "-1") {
 				System.out.println("Press enter to Continue");
 				scanner.nextLine();
 			}
-			} while (!subSelection.equals("-1"));
+			} while (!subSales.equals("-1"));
 			
 		}
 
