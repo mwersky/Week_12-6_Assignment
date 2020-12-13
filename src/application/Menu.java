@@ -1,11 +1,14 @@
 package application;
 
+import java.util.List;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import dao.CustomersDAO;
 import dao.CarsDAO;
 import dao.SalesDAO;
+import entities.Cars;
+import entities.Customers;
 
 
 public class Menu {
@@ -221,14 +224,14 @@ public class Menu {
 		//_________________________________________SALES HELPER METHODS___________________________________________________//
 		private void viewRecentSales() throws SQLException {
 			System.out.println("Processing. One Moment...");		
-			salesDao.getSales();
+			System.out.println(salesDao.getSales());
 		}
 		private void viewSpecificSale() throws SQLException {
 			System.out.println("Enter Sales Identification Number: ");
 			int saleId = scanner.nextInt();
 			
 			if (saleId > 0) {
-			salesDao.getSaleById( saleId );
+			System.out.println(salesDao.getSaleById( saleId ));
 			}
 		}
 		private void createSale() throws SQLException {		
@@ -269,7 +272,7 @@ public class Menu {
 			String custId = scanner.nextLine();
 			if (custId.length() == 6) {				
 				int custIdConvert = Integer.parseInt(custId);
-				customersDAO.readCustomer( custIdConvert );
+				System.out.println(customersDAO.readCustomer( custIdConvert ));
 			}
 		}
 		private void updateCustomer() throws SQLException {
@@ -286,10 +289,14 @@ public class Menu {
 			}
 			
 		}
+		
 		private void viewAllCustById() throws SQLException {
-			System.out.println("Processing. One Moment...");
-			customersDAO.viewAllCust();
+			List<Customers> customers = customersDAO.viewAllCust(); 
+			for (Customers customer : customers) {
+				System.out.println(customer.getCustomerId() + ": " + customer.getFirstName() + " " + customer.getLastName());
+			}
 		}
+		
 		private void deleteCustomer() throws SQLException {
 			System.out.println("Customer id no: ");
 			String custId = scanner.nextLine();
@@ -326,7 +333,9 @@ public class Menu {
 			
 			if (idNo.length() > 0 ) {
 				int idNoConvert = Integer.parseInt(idNo);
-				carsDAO.getCarById(idNoConvert);
+				System.out.println(carsDAO.getCarById(idNoConvert));
+			} else {
+				System.out.println("No cars found");
 			}
 			
 		}
@@ -363,8 +372,11 @@ public class Menu {
 			}
 		}
 		private void viewAllCarsById() throws SQLException {
-			System.out.println("Processing. One Moment...");
-			carsDAO.getCars();
+			List<Cars> cars = carsDAO.getCars(); 
+			for (Cars car : cars) {
+				System.out.println(car.getCarId() + ": " + car.getModel() + " " + car.getMake());
+			}
 		}
+	
 }
 

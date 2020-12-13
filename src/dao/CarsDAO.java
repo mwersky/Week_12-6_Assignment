@@ -33,7 +33,7 @@ public class CarsDAO {
 			cars.add(populateCars(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDouble(5)));
 		}
 		
-		return cars; 
+		return cars;
 	}
 	
 	// ------------ Method for adding a new car into the database --------------
