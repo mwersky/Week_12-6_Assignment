@@ -25,6 +25,7 @@ public class Menu {
 			"Read an Entry",
 			"Update an Entry",
 			"Delete an Entry",
+			"View All Entries by ID no.",
 			"Go Back"
 	};
 	
@@ -99,7 +100,7 @@ public class Menu {
 		}	
 		
 		
-		//____________________________________the Customers subMenu_________________________________________________//
+		//____________________________________the Cars subMenu_________________________________________________//
 		public void SubMenuCars() {
 			String subSelection = "";
 			
@@ -117,6 +118,8 @@ public class Menu {
 				} else if (subSelection.equals("4")) {
 					deleteCar();
 				} else if (subSelection.equals("5")) {
+					viewAllCarsById();
+				} else if (subSelection.equals("6")) {
 					start(); //this method takes us back to the main menu.
 				}			
 				} catch ( SQLException e ) {
@@ -132,7 +135,7 @@ public class Menu {
 		}
 		
 
-		//_________________________________________the Cars subMenu_________________________________________________//
+		//_________________________________________the Customers subMenu_________________________________________________//
 		public void SubMenuCustomer() {
 			String subSelection = "";
 			
@@ -149,7 +152,9 @@ public class Menu {
 					updateCustomer();					
 				} else if (subSelection.equals("4")) {
 					deleteCustomer();
-				} else if (subSelection.equals("5")) {
+				} else if (subSelection.equals("5")) {	
+					viewAllCustById();
+				} else if (subSelection.equals("6")) {
 					start(); //this method takes us back to the main menu.
 				}
 				} catch ( SQLException e ) {
@@ -281,6 +286,10 @@ public class Menu {
 			}
 			
 		}
+		private void viewAllCustById() throws SQLException {
+			System.out.println("Processing. One Moment...");
+			customersDAO.viewAllCustById();
+		}
 		private void deleteCustomer() throws SQLException {
 			System.out.println("Customer id no: ");
 			String custId = scanner.nextLine();
@@ -352,6 +361,10 @@ public class Menu {
 				int carIdConvert = Integer.parseInt(carId);
 				carsDAO.deleteCarById( carIdConvert );
 			}
+		}
+		private void viewAllCarsById() throws SQLException {
+			System.out.println("Processing. One Moment...");
+			carsDAO.viewAllCarsById();
 		}
 }
 
