@@ -288,7 +288,7 @@ public class Menu {
 		}
 		private void viewAllCustById() throws SQLException {
 			System.out.println("Processing. One Moment...");
-			customersDAO.viewAllCustById();
+			customersDAO.viewAllCust();
 		}
 		private void deleteCustomer() throws SQLException {
 			System.out.println("Customer id no: ");
@@ -364,7 +364,7 @@ public class Menu {
 		}
 		private void viewAllCarsById() throws SQLException {
 			System.out.println("Processing. One Moment...");
-			carsDAO.viewAllCarsById();
+			carsDAO.getCars();
 		}
 }
 

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DBConnection {
 	
-	private final static String URL = "jdbc:mysql://localhost:3306/Cars";
+	private final static String URL = "jdbc:mysql://localhost:3306/cars";
 	private final static String USERNAME = "root";
-	private final static String PASSWORD = "1457@Cfg7c"; //THIS WILL NOT WORK WITHOUT ENTERING YOUR PASSWORD!
+	private final static String PASSWORD = "sL@5x88yR"; //THIS WILL NOT WORK WITHOUT ENTERING YOUR PASSWORD!
 	
 	private static DBConnection instance = new DBConnection(); //eager construction . When you immediately take something
 															   // and put it right into the construction.
