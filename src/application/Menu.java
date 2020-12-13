@@ -25,6 +25,7 @@ public class Menu {
 			"Read an Entry",
 			"Update an Entry",
 			"Delete an Entry",
+			"View All Entries by ID no.",
 			"Go Back"
 	};
 	
@@ -48,8 +49,8 @@ public class Menu {
 			System.out.println("Welcome to the dealership. What would you like to do today?");
 			for ( int i = 0; i < menuOpts.length; i++) {
 				System.out.println((i + 1) + ") " + menuOpts[i]);
-			
-				}	
+				}
+			System.out.println("-1 exits the application.");
 			}
 		
 		private void subMenu() {
@@ -68,6 +69,9 @@ public class Menu {
 			
 				}				
 		}
+		//______________________________________SUPER SPICY PASSWORD METHOD_____________________________________________//
+
+		
 		
 		//__________________________Methods that will handle the logic of the main Menu_________________________________//
 		
@@ -96,7 +100,7 @@ public class Menu {
 		}	
 		
 		
-		//____________________________________the Customers subMenu_________________________________________________//
+		//____________________________________the Cars subMenu_________________________________________________//
 		public void SubMenuCars() {
 			String subSelection = "";
 			
@@ -114,6 +118,8 @@ public class Menu {
 				} else if (subSelection.equals("4")) {
 					deleteCar();
 				} else if (subSelection.equals("5")) {
+					viewAllCarsById();
+				} else if (subSelection.equals("6")) {
 					start(); //this method takes us back to the main menu.
 				}			
 				} catch ( SQLException e ) {
@@ -129,7 +135,7 @@ public class Menu {
 		}
 		
 
-		//_________________________________________the Cars subMenu_________________________________________________//
+		//_________________________________________the Customers subMenu_________________________________________________//
 		public void SubMenuCustomer() {
 			String subSelection = "";
 			
@@ -146,7 +152,9 @@ public class Menu {
 					updateCustomer();					
 				} else if (subSelection.equals("4")) {
 					deleteCustomer();
-				} else if (subSelection.equals("5")) {
+				} else if (subSelection.equals("5")) {	
+					viewAllCustById();
+				} else if (subSelection.equals("6")) {
 					start(); //this method takes us back to the main menu.
 				}
 				} catch ( SQLException e ) {
@@ -202,20 +210,48 @@ public class Menu {
 
 		
 		//______________________________________HELPER METHODS FOR THE REST_______________________________________________//
-		
+		/*
+		 * Notes:
+		 * I didn't really think for a second about how you can take a different variable other than a String from a scanner and just immediately fill in variables.
+		 * To this extent I ended up leaving a lot of my original code because I was really proud of my work around. The Sales menu has all the most up to date code and should 
+		 * be a great example of how I could have written this in a cleaner way.
+		 */
 		
 		
 		//_________________________________________SALES HELPER METHODS___________________________________________________//
 		private void viewRecentSales() throws SQLException {
-			
+			System.out.println("Processing. One Moment...");		
+			salesDao.getSales();
 		}
 		private void viewSpecificSale() throws SQLException {
+			System.out.println("Enter Sales Identification Number: ");
+			int saleId = scanner.nextInt();
+			
+			if (saleId > 0) {
+			salesDao.getSaleById( saleId );
+			}
 		}
 		private void createSale() throws SQLException {		
+			System.out.println("Customer ID No:");
+			int custId = scanner.nextInt();
 			
+			System.out.println("Car ID No");			
+			int carId = scanner.nextInt();
+			
+			System.out.println("Profit of Sale: ");
+			double profit = scanner.nextDouble();
+			
+			if (custId > 0 && carId > 0 && profit > 0) {
+			salesDao.logNewSale(custId, carId, profit);
+			}
 		}
 		private void deleteSale() throws SQLException {		
+			System.out.println("Sale Identification number: ");
+			int saleId = scanner.nextInt();
 			
+			if( saleId > 0 ) {
+			salesDao.deleteSaleById( saleId );
+			}
 		}
 		
 		//______________________________________CUSTOMER HELPER METHODS___________________________________________________//
@@ -249,6 +285,10 @@ public class Menu {
 				customersDAO.updateCustomer( custIdConvert, firstName, lastName);
 			}
 			
+		}
+		private void viewAllCustById() throws SQLException {
+			System.out.println("Processing. One Moment...");
+			customersDAO.viewAllCustById();
 		}
 		private void deleteCustomer() throws SQLException {
 			System.out.println("Customer id no: ");
@@ -321,6 +361,10 @@ public class Menu {
 				int carIdConvert = Integer.parseInt(carId);
 				carsDAO.deleteCarById( carIdConvert );
 			}
+		}
+		private void viewAllCarsById() throws SQLException {
+			System.out.println("Processing. One Moment...");
+			carsDAO.viewAllCarsById();
 		}
 }
 
